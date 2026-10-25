@@ -1,29 +1,150 @@
 <!doctype html>
 <html lang="pl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Nova Calculator MAX — kalkulator naukowy, konwerter jednostek, wykresy i analiza danych dla Windows.">
-<title>Nova Calculator MAX</title>
-<style>
-:root{color-scheme:dark;--bg:#0b1020;--panel:#151e31;--blue:#6592ff;--text:#f3f6ff;--muted:#a9b6d2}
-*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:radial-gradient(ellipse at top,#1a2c52,var(--bg) 58%);color:var(--text);line-height:1.6}
-.wrap{max-width:1060px;margin:auto;padding:24px}.nav{display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font-weight:800;font-size:1.2rem}.pill{border:1px solid #334667;border-radius:999px;padding:6px 12px;color:var(--muted);font-size:.9rem}
-.hero{text-align:center;padding:80px 0 55px}.logo{font-size:3.2rem}.hero h1{font-size:clamp(2.3rem,6vw,4.5rem);line-height:1.05;margin:12px 0}.hero p{color:var(--muted);max-width:680px;margin:20px auto;font-size:1.15rem}.button{display:inline-block;background:var(--blue);color:white;text-decoration:none;font-weight:750;border-radius:12px;padding:14px 24px;margin:8px;box-shadow:0 8px 25px #426bca44}.secondary{background:#202c43;border:1px solid #334667}.note{font-size:.9rem;color:var(--muted)}.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:35px 0}.card{background:#151e31dd;border:1px solid #283855;border-radius:18px;padding:22px}.card .emoji{font-size:1.8rem}.card h3{margin:8px 0}.card p{color:var(--muted);margin-bottom:0}.how{background:var(--panel);border-radius:18px;padding:24px;margin:30px 0}.how li{padding:5px 0;color:var(--muted)}footer{border-top:1px solid #26334c;color:var(--muted);padding:24px 0;margin-top:45px;font-size:.9rem}a{color:#a8c2ff}
-</style></head>
-<body><div class="wrap">
-<header class="nav"><div class="brand">✦ Nova Calculator MAX</div><span class="pill">Windows · aplikacja desktopowa</span></header>
-<main><section class="hero"><div class="logo">🧮</div><h1>Oblicz więcej.<br>Prościej.</h1><p>Kalkulator naukowy, konwerter jednostek, wykresy i analiza danych w jednym wygodnym programie na komputer.</p>
-<!-- Po opublikowaniu instalatora podmień adres href na link do pliku EXE w GitHub Releases. -->
-<a class="button" href="https://github.com/Art1232169/nova-calculator-max/releases/download/v1.0.0/NovaCalculatorMAX-Setup.exe">⬇ Pobierz instalator Windows</a>
-<a class="button secondary" href="#funkcje">Poznaj funkcje</a>
-<p class="note">Instalator Windows (.exe) · Nie publikuj instalatora, dopóki nie został zbudowany i przetestowany.</p></section>
-<section id="funkcje"><h2>Wszystko w jednym miejscu</h2><div class="features">
-<div class="card"><div class="emoji">➗</div><h3>Kalkulator</h3><p>Działania podstawowe, tryb naukowy i programistyczny, potęgi, pierwiastki oraz funkcje trygonometryczne.</p></div>
-<div class="card"><div class="emoji">🔁</div><h3>Konwerter</h3><p>Długość, powierzchnia, objętość, masa, temperatura, prędkość, energia, moc, ciśnienie, czas i dane komputerowe.</p></div>
-<div class="card"><div class="emoji">📈</div><h3>Wykresy i dane</h3><p>Rysowanie funkcji, statystyki, analiza tabel i praca z plikami.</p></div>
-<div class="card"><div class="emoji">⚡</div><h3>Fizyka i technika</h3><p>Przydatne obliczenia, m.in. gęstość, prąd i wielkości fizyczne.</p></div>
-<div class="card"><div class="emoji">🌐</div><h3>Narzędzia internetowe</h3><p>Wyszukiwanie w sieci i pobieranie informacji z wybranych stron, jeśli pozwalają na to ich ustawienia.</p></div>
-<div class="card"><div class="emoji">🗂️</div><h3>Historia</h3><p>Wygodny dostęp do obliczeń i dodatkowych narzędzi w aplikacji.</p></div>
-</div></section>
-<section class="how"><h2>Jak zainstalować?</h2><ol><li>Pobierz plik instalacyjny z przycisku u góry strony.</li><li>Otwórz pobrany plik i postępuj zgodnie z instrukcjami instalatora.</li><li>Uruchom Nova Calculator MAX z menu Start lub ikony na pulpicie.</li></ol><p class="note">To strona przykładowa. Przycisk pobierania trzeba połączyć z rzeczywistym instalatorem opublikowanym w sekcji Releases.</p></section>
-</main><footer>© Nova Calculator MAX · Projekt niezależny. Windows może wyświetlić ostrzeżenie dla niepodpisanego instalatora.</footer></div></body></html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nova Calculator MAX — kalkulator naukowy, konwerter jednostek, wykresy i narzędzia dla Windows.">
+  <meta name="theme-color" content="#050914">
+  <title>Nova Calculator MAX — Oblicz bez ograniczeń</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050914;
+      --panel: rgba(10, 22, 42, .84);
+      --panel2: #0a1426;
+      --blue: #28d7ff;
+      --blue2: #168cff;
+      --text: #f3f9ff;
+      --muted: #9bb0c8;
+      --border: rgba(40, 215, 255, .19);
+      --glow: 0 0 34px rgba(40, 215, 255, .14);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(ellipse at 50% -15%, rgba(0, 150, 255, .20), transparent 48%),
+        radial-gradient(circle at 8% 40%, rgba(0, 225, 255, .055), transparent 28%),
+        var(--bg);
+    }
+    a { color: var(--blue); }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid rgba(140, 190, 230, .12); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.03em; }
+    .brand-icon { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 13px; color: var(--blue); background: #07182a; box-shadow: var(--glow); font-size: 1.35rem; }
+    .brand-name { font-size: 1.08rem; }
+    .status { font-size: .82rem; color: #b7cbe0; border: 1px solid var(--border); background: rgba(8, 25, 44, .8); padding: 7px 12px; border-radius: 999px; white-space: nowrap; }
+    .hero { padding: 88px 0 68px; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 50px; }
+    .eyebrow { display: inline-flex; gap: 9px; align-items: center; color: var(--blue); font-size: .82rem; text-transform: uppercase; letter-spacing: .15em; font-weight: 800; }
+    .eyebrow:before { content: ""; width: 24px; height: 1px; background: var(--blue); box-shadow: 0 0 12px var(--blue); }
+    h1 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.02; letter-spacing: -.065em; margin: 18px 0; }
+    .gradient { color: var(--blue); text-shadow: 0 0 26px rgba(40, 215, 255, .24); }
+    .intro { color: var(--muted); max-width: 610px; font-size: 1.12rem; margin: 0 0 27px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; border-radius: 12px; padding: 13px 19px; border: 1px solid transparent; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .primary { color: #00111a; background: linear-gradient(115deg, #55e7ff, #199bff); box-shadow: 0 0 28px rgba(40, 215, 255, .23); }
+    .primary:hover { box-shadow: 0 0 38px rgba(40, 215, 255, .35); }
+    .secondary { color: var(--text); border-color: rgba(130, 180, 220, .23); background: rgba(13, 28, 48, .72); }
+    .microcopy { color: #7188a3; font-size: .82rem; margin-top: 14px; }
+    .preview-wrap { position: relative; }
+    .preview-glow { position: absolute; inset: 12% 7%; background: rgba(0, 172, 255, .18); filter: blur(55px); border-radius: 50%; }
+    .calculator { position: relative; padding: 20px; border-radius: 24px; border: 1px solid rgba(40, 215, 255, .26); background: linear-gradient(145deg, rgba(12, 29, 51, .98), rgba(5, 12, 25, .98)); box-shadow: 0 24px 70px #0008, var(--glow); transform: perspective(900px) rotateY(-4deg) rotateX(2deg); }
+    .calc-top { display: flex; align-items: center; justify-content: space-between; color: #7f9ab6; font-size: .78rem; margin-bottom: 26px; }
+    .dots { display: flex; gap: 6px; }
+    .dots i { width: 7px; height: 7px; border-radius: 50%; background: #31506a; }
+    .screen-label { color: #7c98b3; font-size: .8rem; }
+    .screen-value { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.05em; text-align: right; color: #f3fbff; text-shadow: 0 0 20px #28d7ff22; padding: 5px 0 22px; border-bottom: 1px solid rgba(130, 180, 220, .13); }
+    .keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-top: 17px; }
+    .key { text-align: center; padding: 12px 3px; border-radius: 9px; border: 1px solid rgba(130, 180, 220, .10); background: rgba(17, 39, 63, .8); color: #d7eaff; font-size: .92rem; }
+    .key.op { color: var(--blue); background: rgba(10, 74, 103, .25); border-color: rgba(40, 215, 255, .15); }
+    .key.eq { color: #00111a; background: linear-gradient(120deg, #55e7ff, #199bff); font-weight: 900; }
+    .section { padding: 48px 0; }
+    .section-head { max-width: 700px; margin-bottom: 26px; }
+    .section-kicker { color: var(--blue); text-transform: uppercase; letter-spacing: .14em; font-size: .77rem; font-weight: 800; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.15; letter-spacing: -.04em; margin: 9px 0 10px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .card { padding: 23px; border: 1px solid rgba(130, 180, 220, .14); border-radius: 17px; background: linear-gradient(145deg, rgba(11, 25, 45, .92), rgba(7, 15, 29, .9)); transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(40, 215, 255, .4); box-shadow: var(--glow); }
+    .feature-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 13px; color: var(--blue); font-size: 1.35rem; background: rgba(40, 215, 255, .08); border: 1px solid rgba(40, 215, 255, .16); }
+    h3 { margin: 16px 0 6px; font-size: 1.08rem; }
+    .card p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .install { margin: 48px 0 60px; padding: clamp(24px, 5vw, 42px); border: 1px solid rgba(40, 215, 255, .23); border-radius: 22px; background: radial-gradient(ellipse at 100% 0%, rgba(0, 150, 255, .13), transparent 45%), #081426; box-shadow: var(--glow); display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .install p { color: var(--muted); margin: 0; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 22px; }
+    .step { border-top: 1px solid var(--border); padding-top: 15px; color: var(--muted); font-size: .92rem; }
+    .step b { color: var(--blue); display: block; margin-bottom: 5px; }
+    footer { border-top: 1px solid rgba(140, 190, 230, .12); padding: 24px 0 32px; display: flex; justify-content: space-between; gap: 15px; color: #7188a3; font-size: .82rem; }
+    @media (max-width: 780px) { .hero { grid-template-columns: 1fr; padding-top: 58px; gap: 35px; } .preview-wrap { max-width: 490px; width: 100%; margin: 0 auto; } .features { grid-template-columns: repeat(2, 1fr); } .install { align-items: flex-start; flex-direction: column; } }
+    @media (max-width: 520px) { .wrap { width: min(100% - 28px, 1120px); } .nav { align-items: flex-start; padding: 16px 0; flex-direction: column; } .features, .steps { grid-template-columns: 1fr; } .hero { padding: 45px 0 40px; } .calculator { transform: none; } footer { flex-direction: column; } .button { width: 100%; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <div class="brand"><span class="brand-icon">✦</span><span class="brand-name">NOVA CALCULATOR <span class="gradient">MAX</span></span></div>
+      <span class="status">● Aplikacja na Windows</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Jedno narzędzie. Więcej możliwości.</div>
+          <h1>Oblicz więcej.<br><span class="gradient">Myśl szybciej.</span></h1>
+          <p class="intro">Kalkulator naukowy, konwertery jednostek, wykresy i narzędzia techniczne w jednym miejscu. Poznaj Nova Calculator MAX na komputer z Windows.</p>
+          <div class="actions">
+            <!-- WAŻNE: wstaw tutaj swój prawdziwy link do wydania GitHub Releases. -->
+            <a class="button primary" href="https://github.com/Art1232169/nova-calculator-max/releases/latest">↓ Pobierz na Windows</a>
+            <a class="button secondary" href="#funkcje">Zobacz funkcje <span aria-hidden="true">↘</span></a>
+          </div>
+          <p class="microcopy">Instalator .exe · Windows · Pobieraj tylko z oficjalnego wydania projektu</p>
+        </div>
+        <div class="preview-wrap" aria-label="Dekoracyjny podgląd interfejsu kalkulatora">
+          <div class="preview-glow"></div>
+          <div class="calculator">
+            <div class="calc-top"><span class="dots"><i></i><i></i><i></i></span><span>NOVA / SCIENTIFIC</span><span>⌘</span></div>
+            <div class="screen-label">WYNIK</div>
+            <div class="screen-value">12 480.625</div>
+            <div class="keys" aria-hidden="true">
+              <div class="key op">sin</div><div class="key op">cos</div><div class="key op">√x</div><div class="key op">÷</div>
+              <div class="key">7</div><div class="key">8</div><div class="key">9</div><div class="key op">×</div>
+              <div class="key">4</div><div class="key">5</div><div class="key">6</div><div class="key op">−</div>
+              <div class="key">1</div><div class="key">2</div><div class="key">3</div><div class="key op">+</div>
+              <div class="key">±</div><div class="key">0</div><div class="key">.</div><div class="key eq">=</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="funkcje">
+        <div class="section-head"><div class="section-kicker">Możliwości</div><h2>Więcej niż zwykły kalkulator.</h2><p>Narzędzia do codziennych obliczeń, nauki i pracy — zebrane w jednej aplikacji.</p></div>
+        <div class="features">
+          <article class="card"><div class="feature-icon">∑</div><h3>Kalkulator naukowy</h3><p>Działania podstawowe, potęgi, pierwiastki, trygonometria i dodatkowe tryby obliczeń.</p></article>
+          <article class="card"><div class="feature-icon">⇄</div><h3>Konwerter jednostek</h3><p>Długość, masa, temperatura, prędkość, energia, moc, ciśnienie, czas i dane komputerowe.</p></article>
+          <article class="card"><div class="feature-icon">⌁</div><h3>Wykresy i dane</h3><p>Wizualizacja funkcji, statystyki i narzędzia do pracy z tabelami oraz plikami.</p></article>
+          <article class="card"><div class="feature-icon">ϟ</div><h3>Fizyka i elektryczność</h3><p>Pomocnicze obliczenia techniczne i wybrane wielkości fizyczne.</p></article>
+          <article class="card"><div class="feature-icon">⌕</div><h3>Narzędzia internetowe</h3><p>Dostęp do wyszukiwania i informacji z sieci, gdy połączenie i strona na to pozwalają.</p></article>
+          <article class="card"><div class="feature-icon">↺</div><h3>Historia i narzędzia</h3><p>Wygodny dostęp do obliczeń oraz dodatkowych funkcji dostępnych w aplikacji.</p></article>
+        </div>
+      </section>
+
+      <section class="install" id="pobierz">
+        <div><div class="section-kicker">Gotowy, by zacząć?</div><h2>Twoje obliczenia. Jedno miejsce.</h2><p>Pobierz instalator i uruchom Nova Calculator MAX na komputerze.</p></div>
+        <a class="button primary" href="https://github.com/Art1232169/nova-calculator-max/releases/latest">↓ Pobierz instalator</a>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><div class="section-kicker">Szybki start</div><h2>Instalacja w trzech krokach.</h2></div>
+        <div class="steps"><div class="step"><b>01 / Pobierz</b>Wybierz instalator Windows z wydania projektu.</div><div class="step"><b>02 / Zainstaluj</b>Otwórz plik i wykonuj polecenia instalatora.</div><div class="step"><b>03 / Uruchom</b>Znajdź Nova Calculator MAX w menu Start.</div></div>
+      </section>
+    </main>
+    <footer><span>© Nova Calculator MAX</span><span>Niezależny projekt na Windows · Interfejs strony w języku polskim</span></footer>
+  </div>
+</body>
+</html>
