@@ -35,9 +35,16 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install buildozer cython==0.29.36
 
-      - name: Build Android APK
-        working-directory: android
+      - name: Check Android files
         run: |
+          pwd
+          ls -la
+          find . -maxdepth 4 -type f \( -name "main.py" -o -name "buildozer.spec" \)
+
+      - name: Build Android APK
+        run: |
+          cd android
+          ls -la
           buildozer -v android debug
 
       - name: Upload APK
