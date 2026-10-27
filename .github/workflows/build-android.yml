@@ -44,7 +44,11 @@ jobs:
 
       - name: Build APK
         working-directory: android.
+        env:
+          JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64
         run: |
+          export PATH="$JAVA_HOME/bin:$PATH"
+          java -version
           buildozer -v android debug
 
       - name: Upload APK
