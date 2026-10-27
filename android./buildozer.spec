@@ -6,6 +6,7 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json,txt
 version = 1.2.0
 requirements = python3,kivy
+p4a.branch = develop
 orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET
