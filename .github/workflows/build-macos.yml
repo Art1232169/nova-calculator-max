@@ -3,9 +3,6 @@ name: Build Nova Calculator MAX for macOS
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   build-macos:
