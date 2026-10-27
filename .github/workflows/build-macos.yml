@@ -44,8 +44,19 @@ jobs:
           cd dist
           zip -r NovaCalculatorMAX-macOS.zip NovaCalculatorMAX.app
 
-      - name: Upload artifact
+
+      - name: Create macOS DMG
+        run: |
+          mkdir -p dmg
+          hdiutil create \
+            -volname "Nova Calculator MAX" \
+            -srcfolder dist/NovaCalculatorMAX.app \
+            -ov \
+            -format UDZO \
+            dmg/NovaCalculatorMAX-macOS.dmg
+
+      - name: Upload macOS installer
         uses: actions/upload-artifact@v4
         with:
-          name: NovaCalculatorMAX-macOS
-          path: dist/NovaCalculatorMAX-macOS.zip
+          name: NovaCalculatorMAX-macOS-DMG
+          path: dmg/NovaCalculatorMAX-macOS.dmg
