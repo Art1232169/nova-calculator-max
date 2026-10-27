@@ -5,7 +5,7 @@ package.domain = com.art1232169
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json,txt
 version = 1.2.0
-requirements = python3==3.12.10,kivy
+requirements = python3,kivy
 orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET
