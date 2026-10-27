@@ -1,60 +1,24 @@
 
-name: Build Nova Calculator MAX for Android
+name: Find Android project
 
 on:
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
-  build-android:
+  locate:
     runs-on: ubuntu-22.04
     steps:
-      - name: Download repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install system dependencies
+      - name: Find project files
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            git zip unzip openjdk-17-jdk \
-            python3-pip python3-venv \
-            autoconf libtool pkg-config \
-            zlib1g-dev libncurses-dev \
-            libffi-dev libssl-dev \
-            libltdl-dev
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install Buildozer
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install buildozer cython==0.29.36
-
-
-      - name: Find Android project
-        run: |
-          echo "Current directory:"
+          echo "Repository root:"
           pwd
-          echo "Repository files:"
+          echo "Files and folders:"
           ls -la
-          echo "Searching for Buildozer project:"
-          find . -type f \( -name "buildozer.spec" -o -name "main.py" \) -print
-
-
-      - name: Build Android APK
-        run: |
-          cd android
-          ls -la
-          buildozer -v android debug
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: NovaCalculatorMAX-Android
-          path: android/bin/*.apk
-          if-no-files-found: error
+          echo "Android project files:"
+          find . -type f \( \
+            -name "buildozer.spec" -o \
+            -name "main.py" \
+          \) -print
