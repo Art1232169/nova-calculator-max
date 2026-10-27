@@ -1,48 +1,18 @@
 
-name: Build Nova Calculator MAX for macOS
-
-on:
-  workflow_dispatch:
-  push:
-    tags:
-      - "v*"
-
-jobs:
-  build-macos:
-    runs-on: macos-latest
-
-    steps:
-      - name: Download source code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install Tkinter and build tools
+      - name: Locate calculator source
         run: |
-          brew install python-tk
-          python -m pip install --upgrade pip
-          python -m pip install pyinstaller
-
-      - name: Find calculator source
-        run: |
-          find . -name "nova_calculator_max.py"
+          echo "Files in repository:"
+          find . -maxdepth 6 -type f -name "*.py" -print
+          SOURCE="$(find . -type f -name 'nova_calculator_max.py' -print -quit)"
+          if [ -z "$SOURCE" ]; then
+            echo "ERROR: nova_calculator_max.py was not found."
+            exit 1
+          fi
+          echo "Found source: $SOURCE"
+          echo "SOURCE=$SOURCE" >> "$GITHUB_ENV"
 
       - name: Build macOS app
         run: |
           pyinstaller --noconfirm --clean --windowed --onedir \
             --name "NovaCalculatorMAX" \
-            "$(find . -name 'nova_calculator_max.py' -print -quit)"
-
-      - name: Package app
-        run: |
-          cd dist
-          zip -r NovaCalculatorMAX-macOS.zip NovaCalculatorMAX.app
-
-      - name: Upload app
-        uses: actions/upload-artifact@v4
-        with:
-          name: NovaCalculatorMAX-macOS
-          path: dist/NovaCalculatorMAX-macOS.zip
+            "$SOURCE"
