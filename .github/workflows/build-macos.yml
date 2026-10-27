@@ -1,0 +1,51 @@
+
+name: Build Nova Calculator MAX for macOS
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          brew install python-tk
+          python -m pip install --upgrade pip pyinstaller
+
+      - name: Find source
+        run: |
+          find . -type f -name "*.py"
+          SOURCE="$(find . -type f -name 'nova_calculator_max.py' -print -quit)"
+          if [ -z "$SOURCE" ]; then
+            echo "Nie znaleziono pliku nova_calculator_max.py"
+            exit 1
+          fi
+          echo "SOURCE=$SOURCE" >> "$GITHUB_ENV"
+
+      - name: Build app
+        run: |
+          pyinstaller --noconfirm --clean --windowed --onedir \
+            --name NovaCalculatorMAX "$SOURCE"
+
+      - name: Package app
+        run: |
+          cd dist
+          zip -r NovaCalculatorMAX-macOS.zip NovaCalculatorMAX.app
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NovaCalculatorMAX-macOS
+          path: dist/NovaCalculatorMAX-macOS.zip
